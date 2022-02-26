@@ -1,0 +1,45 @@
+---
+title: "Race Distribution in Jail from 2009 to 2018"
+author: "Yuhan Zhang"
+date: "2/25/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<div align = "center"><h1>Introduction</h2></div>
+
+```{r introduction, echo=F, warning=F, message=F}
+source("analysis.R")
+```
+&nbsp;&nbsp;&nbsp;&nbsp;Racism becomes a hot topic after the death of Floyd. For most people, black people sometimes mean low education level and violence, and because of this stereotype for black, people may assume that most prisoners are black, which is totally a wrong image for prisoners.
+
+&nbsp;&nbsp;&nbsp;&nbsp;According to the data set collected by [Vera Institute](https://www.vera.org/), the overall percentage of black prisoners is `r summary_data[1]`, while the percentage of white is around `r summary_data[2]`, which is almost the same, while the proportion of black people in prison is a little bit lower than the one for white people. In 2018, which is the most recent year that has data, the proportion of black prisoners is `r summary_data[3]`, while the white take around `r summary_data[4]`. For other races, like AAPI and native, their proportion in prisoner is lower than black and white, which is only around `r summary_data[5]`. 
+
+
+<div align = "center"><h2>Change over Time</h2></div>
+
+&nbsp;&nbsp;&nbsp;&nbsp;When we think about black people which are in prison, we often think that their population in prison is continuously increasing, but this is not a correct statement. The graph below shows the change in black people, white people, and people with other races which are in prison, which clearly shows that the number of white prisoners is the one that increase over the time, and the population of black is decreasing for the past ten years. 
+
+```{r, echo=F, message=F, warning=F}
+trend_map
+```
+
+<div align = "center"><h2>Comparison between Races in Each Year</h2></div>
+
+&nbsp;&nbsp;&nbsp;&nbsp;So how is their difference for each year? The graph below shows the numbers of different races for each year in a grouped bar chart, which also shows the difference between black prisoners and white prisoners. The number between them is a shocking one, which reaches `r difference` in 2018.
+
+```{r, echo=F, message=F, warning=F}
+comparison_graph
+```
+
+<div align = "center"><h2>Minor Races Proportion across US</h2></div>
+
+&nbsp;&nbsp;&nbsp;&nbsp;The map below shows the proportion of colored people in prison across the US.
+
+
+```{r, echo=F, message=F, warning=F}
+state_map
+```
