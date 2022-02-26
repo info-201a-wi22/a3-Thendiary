@@ -29,15 +29,16 @@ trend_map
 
 <div align = "center"><h2>Comparison between Races in Each Year</h2></div>
 
-&nbsp;&nbsp;&nbsp;&nbsp;So how is their difference for each year? The graph below shows the numbers of different races for each year in a grouped bar chart, which also shows the difference between black prisoners and white prisoners. The number between them is a shocking one, which reaches `r difference` in 2018.
+&nbsp;&nbsp;&nbsp;&nbsp;So how is their difference for each year? The graph below shows the numbers of different races for each year in a grouped bar chart, which also shows the difference between black prisoners and white prisoners. The number of difference between them is a shocking one, which reaches `r difference` in 2018. 
 
+&nbsp;&nbsp;&nbsp;&nbsp;Accroding to this graph, from 2009, the population of black prisoners is less than the one of white prisoners. There may be a factor that in US black people population is still less than the populationof white, or may be becuase there are more and more black people educated and had a stable job and salary in the past ten years, which makes less people choose to be criminals. _Who want to be a prisoner when they could choose another way for life?_ So the numbers of black prisoners is decreasing from year to year.
 ```{r, echo=F, message=F, warning=F}
 comparison_graph
 ```
 
 <div align = "center"><h2>Minor Races Proportion across US</h2></div>
 
-&nbsp;&nbsp;&nbsp;&nbsp;The map below shows the proportion of colored people in prison across the US.
+&nbsp;&nbsp;&nbsp;&nbsp;The map below shows the proportion of colored people in prison across the US. From the map, we can clearly see that the states in southeast has a higher proportion of minor races among prisoners, while in the west part of US, the rate is much lower. The reason of this phenomenon may that for states in west with higher level of economy, they also have higher education level and their mind is more open than those with worse economy. Due to the reason above, black people would have a better life in states with a more open mind about race and gender.
 
 
 ```{r, echo=F, message=F, warning=F}

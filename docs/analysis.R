@@ -4,8 +4,11 @@ library("tidyverse")
 library("openintro")
 library("plotly")
 
+# Read csv files
 jurisdiction <- read_csv("../source/incarceration_trends_jail_jurisdiction.csv")
 incarceration_trends <- read_csv("../source/incarceration_trends.csv")
+
+
 
 # Trend over time chart
 minority_in_jail <- jurisdiction %>%
@@ -23,11 +26,12 @@ trend_map <- ggplot(data = minority_in_jail_10) +
   geom_line(mapping = aes(x = year, y = black_pop, color = "Black"), size = 3) +
   geom_line(mapping = aes(x = year, y = other_minor_race, color = "Other Race"), size = 3) + 
   geom_line(mapping = aes(x = year, y = white_pop, color = "White"), size = 3) +
-  labs(x = "Year", y = "Pop", title = "Population in Different Race in Prison",
+  labs(x = "Year", y = "Population", title = "Population in Different Race in Prison",
        colour = "Race")
 
-# Comparison chart
 
+
+# Comparison chart
 comparison <- jurisdiction %>%
   select(black_jail_pop, aapi_jail_pop, native_jail_pop,
          other_race_jail_pop, year, total_jail_pop, white_jail_pop) %>%
@@ -49,22 +53,20 @@ difference <- toString(round(white_pop - black_pop, 0))
 white_temp <- select(comparison, year, white_pop) %>%
   rename(pop = white_pop) %>%
   mutate(Race = "White")
-minor_temp <- select(comparison, year, minor_race_pop) %>%
-  rename(pop = minor_race_pop) %>%
-  mutate(Race = "Other race")
 black_temp <- select(comparison, year, black_pop) %>%
   rename(pop = black_pop) %>%
   mutate(Race = "Black")
-graph_df <- rbind(white_temp, minor_temp, black_temp) %>%
+graph_df <- rbind(white_temp, black_temp) %>%
   filter(year >= 2009) %>%
   arrange(-year)
 
 comparison_graph <- ggplot(data = graph_df) +
   geom_col(mapping = aes(x = year, y = pop, fill = Race), position = "dodge") + 
-  labs(colour = "Race", x = "Year", y = "Pop", title = "Prison Population Distribution in Race from 2009 to 2018")
+  labs(colour = "Race", x = "Year", y = "Population", title = "Prison Population Distribution in Race from 2009 to 2018")
+
+
 
 # Map chart
-
 over_state <- incarceration_trends %>%
   select(year, state, total_jail_pop, black_jail_pop, aapi_jail_pop, native_jail_pop, other_race_jail_pop) %>%
   group_by(state) %>%
@@ -89,11 +91,11 @@ state_map <- ggplot(state_shape) +
     size = 0.1 ) +
   coord_map() +
   scale_fill_continuous(low = "#132B43", high = "White") +
-  labs(fill = "Proportion", title = "Minor Race Proportion in Jail from 2009 to 2018") +
-  theme(axis.title.x = element_blank(), axis.title.y = element_blank())
+  labs(fill = "Proportion", title = "Minor Race Proportion in Jail from 2009 to 2018")
+
+
 
 # Summary data
-
 overall_black_prop <- round(sum(minority_in_jail$black_pop, na.rm = T) / sum(minority_in_jail$total_pop, na.rm = T) * 100, 2)
 overall_black_prop <- paste(overall_black_prop, "%", sep = "")
 
